@@ -6,16 +6,13 @@ Data Scientist.: Dr.Eddy Giusepe Chirinos Isidro
 
 from typing import Union
 from fastapi import FastAPI
-from pydantic import BaseModel
+from models.item_model import Item
+
 
 # Criação de uma aplicação FastAPI
 app = FastAPI()
 
-class Item(BaseModel):
-    '''Uma classe Item e dentro (BaseModel) a classe pai'''
-    name: str
-    price: float
-    is_offer: Union[bool, None] = None
+
 
 @app.get("/")
 def read_root():
