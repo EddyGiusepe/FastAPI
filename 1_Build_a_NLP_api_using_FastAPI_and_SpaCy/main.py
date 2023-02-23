@@ -26,8 +26,8 @@ import spacy
 from pydantic import BaseModel
 
 
-# Carregamos nosso modelo
-en_core_web = spacy.load("en_core_web_sm")
+# Carregamos nosso modelo pré-treinado em PORTUGUÊS
+pt_core_news_lg = spacy.load("pt_core_news_lg")
 
 '''
 Ao adicionar essa Tag nos dará uma Interface de usuário incrível para documentação.
@@ -43,7 +43,7 @@ class Input(BaseModel):
 
 @app.post("/analyze_text")
 def get_text_characteristics(sentence_input: Input):
-    document = en_core_web(sentence_input.sentence)
+    document = pt_core_news_lg(sentence_input.sentence)
     output_array = []
     for token in document:
         output = {
@@ -54,3 +54,24 @@ def get_text_characteristics(sentence_input: Input):
         output_array.append(output)
     return {"output": output_array}
     
+
+
+@app.post("/entity_recognition") 
+def get_entity(sentence_input: Input): 
+    document = pt_core_news_lg(sentence_input.sentence) 
+    output_array = [] 
+    for token in document.ents: 
+        output = { 
+            "Text": token.text, "Start Char": token.start_char, 
+            "End Char": token.end_char, "Label": token.label_ 
+        } 
+        output_array.append(output) 
+    return {"output": output_array}
+
+
+
+# Assim executamos este arquivo:
+# uvicorn main:app --reload
+
+# No browser fazemos, assim:
+# http://127.0.0.1:8000/docs
