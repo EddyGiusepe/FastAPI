@@ -74,4 +74,4 @@ def get_entity(sentence_input: Input):
 É isso Pessoal!!
 
 
-Thanks God!
+Thanks God 🙌!
