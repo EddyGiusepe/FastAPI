@@ -5,15 +5,22 @@ Data Scientist.: PhD.Eddy Giusepe Chirinos Isidro
 Criando uma interface web para o modelo de previsão de carros com Streamlit
 ===========================================================================
 
+Neste script criamos a Interface de nosso Modelo de Machine Learning, com streamlit.
+Repara que depois de instanciar esta Interface Web em Streamlit você deve instanciar, também, o 
+script 'main.py' do fastAPI.
+
 Executamos assim:
 
 $ streamlit run app.py
 """
 
 import pandas as pd
+import requests
 import streamlit 
+import json
 
-df = pd.read_csv("../cleaned_car_data.csv")
+
+df = pd.read_csv("/home/eddygiusepe/1_Eddy_Giusepe/FastAPI/4_End-to-End_ML_FastAPI_Streamlit_Docker/cleaned_car_data.csv")
 
 
 def run():
@@ -34,6 +41,12 @@ def run():
         'fuel_type': fuel_type,
         }
 
+# Quando o botão "Predict" é clicado, obtemos os resultados do nosso modelo usando a
+# API que criamos com a ajuda de "request".
+    if streamlit.button("Predict"):
+        response = requests.post("http://127.0.0.1:8000/predict", json=data)
+        prediction = response.text
+        streamlit.success(f"A predição do Modelo: {prediction}")
 
 
 
@@ -41,4 +54,5 @@ def run():
 
 
 if __name__ == '__main__':
+    # Por padrão, ele será executado na porta 8501
     run()
