@@ -12,6 +12,7 @@ $ uvicorn main:app --reload
 ou
 $ python main.py
 """
+
 from fastapi import FastAPI
 import joblib
 import uvicorn
