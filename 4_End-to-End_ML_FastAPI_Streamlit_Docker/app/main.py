@@ -26,7 +26,7 @@ app = FastAPI(title='🤗 Machine learning: Regressão Linear para previsão de 
               Projeto de aprendizado de máquina end-to-end para prever os preços de carros.""")
 
 
-model = joblib.load("../LinearRegressionModel.pkl")
+model = joblib.load("../model/LinearRegressionModel.pkl")
 
 
 """
