@@ -131,4 +131,4 @@ dmypy.json
 # Eddy
 __pycache__/
 venv_fastapi/
-model/
+./data/
