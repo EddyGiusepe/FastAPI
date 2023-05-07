@@ -1,6 +1,8 @@
 """
 Data Scientist.: PhD.Eddy Giusepe Chirinos Isidro
 
+https://medium.com/@furkankizilay/end-to-end-machine-learning-project-using-fastapi-streamlit-and-docker-6fda32d25c5d
+
 
 Criando uma interface web para o modelo de previsão de carros com Streamlit
 ===========================================================================
