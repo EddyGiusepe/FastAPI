@@ -33,3 +33,4 @@ def calcular(operando_1: float, operando_2: float):#.../calculadora?operando_1=2
 def update_item(item_id: int, item: Item):
     '''Função de Itens.'''
     return {"item_name": item.name, "item_id": item_id, "item_price": item.price}
+
